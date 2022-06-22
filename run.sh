@@ -2,5 +2,5 @@
 set -e
 
 npm install
-docker compose up -docker
+docker compose up -d
 npm run run-f
