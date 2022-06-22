@@ -18,4 +18,5 @@ model Users {
   login  String @unique
   password String
   is_admin Boolean
+  created_at DateTime   @default(now())
 }
