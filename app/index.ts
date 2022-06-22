@@ -53,37 +53,37 @@ const getHashedPassword = (password: any) => {
     const hash = sha256.update(password).digest('base64');
     return hash;
 }
-app.post('/register', async (req, res) => {
-    const { login, password, confirmPassword } = req.body;
-
-    if (password === confirmPassword) {
-      const userHave = await prisma.bots.findMany({where: { id: Number(id) }})
-      if (userHave) {
-        res.render('register', {
-          message: 'User already registered.',
-          messageClass: 'alert-danger'
-        });
-        return;
-      }
-      const hashedPassword = getHashedPassword(password);
-
-      users.push({
-        firstName,
-        lastName,
-        email,
-        password: hashedPassword
-      });
-      res.render('login', {
-        message: 'Registration Complete. Please login to continue.',
-        messageClass: 'alert-success'
-      });
-    } else {
-      res.render('register', {
-        message: 'Password does not match.',
-        messageClass: 'alert-danger'
-      });
-    }
-});
+// app.post('/register', async (req, res) => {
+//     const { login, password, confirmPassword } = req.body;
+//
+//     if (password === confirmPassword) {
+//       const userHave = await prisma.bots.findMany({where: { id: Number(id) }})
+//       if (userHave) {
+//         res.render('register', {
+//           message: 'User already registered.',
+//           messageClass: 'alert-danger'
+//         });
+//         return;
+//       }
+//       const hashedPassword = getHashedPassword(password);
+//
+//       users.push({
+//         firstName,
+//         lastName,
+//         email,
+//         password: hashedPassword
+//       });
+//       res.render('login', {
+//         message: 'Registration Complete. Please login to continue.',
+//         messageClass: 'alert-success'
+//       });
+//     } else {
+//       res.render('register', {
+//         message: 'Password does not match.',
+//         messageClass: 'alert-danger'
+//       });
+//     }
+// });
 
 app.listen(3000, () =>
   console.log('REST API server ready at: http://localhost:3000'),
