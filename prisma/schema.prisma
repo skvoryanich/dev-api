@@ -17,5 +17,5 @@ model Users {
   id    Int    @id @default(autoincrement())
   login  String @unique
   password String
-  is_admin Bool
+  is_admin Boolean
 }
