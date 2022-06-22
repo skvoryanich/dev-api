@@ -8,7 +8,7 @@ app.use(express.json())
 
 app.get('/bots', async (req, res) => {
   const bots = [{id: 1, name: 'lalala', idtg: 123}, {id: 2, name: 'lalala2', idtg: 12322}];
-  res.json(bots)
+  res.send(bots);
 })
 
 app.listen(3000, () =>
