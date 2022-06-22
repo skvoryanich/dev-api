@@ -7,8 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 
 app.get('/bots', async (req, res) => {
-  const bots = [{id: 1, name: 'lalala', idtg: 123}, {id: 2, name: 'lalala2', idtg: 12322}];
-  res.send(bots);
+  res.send('lalala');
 })
 
 app.listen(3000, () =>
