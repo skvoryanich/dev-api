@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run-f": "npx nodemon app/index.ts",
-    "migrate": "npx prisma migrate --dev --skip-generate"
+    "migrate": "npx prisma migrate dev --skip-generate"
   },
   "keywords": [],
   "author": "",
