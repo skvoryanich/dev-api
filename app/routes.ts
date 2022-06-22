@@ -1,4 +1,4 @@
-export function routes(app: any) {
+export function routesBots(app: any) {
     app.get('/', (req: any, res: any) => {
         res.json({
             type: 'message',
