@@ -12,3 +12,10 @@ model Bots {
   name  String @unique
   id_tg String @unique
 }
+
+model Users {
+  id    Int    @id @default(autoincrement())
+  login  String @unique
+  password String
+  is_admin Bool
+}
