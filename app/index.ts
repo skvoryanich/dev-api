@@ -5,7 +5,7 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/bots', async (req, res) => {
+app.get('/bots', (req, res) => {
   res.send('lalala');
 })
 

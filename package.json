@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run-f": "npx nodemon app/index.ts",
+    "run-f": "npx nodemon app/index.ts"
   },
   "keywords": [],
   "author": "",
