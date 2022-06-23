@@ -1,8 +1,9 @@
+import {Request, Response} from "express";
 import {AppDataSource} from "./data-source";
 import {Bots} from "./entity/Bots";
 
 export function routesBots(app: any) {
-    app.get('/', (req: any, res: any) => {
+    app.get('/', (req: Request, res: Response) => {
         res.json({
             type: 'message',
             body: 'RESTfull api for telegram reminds'
