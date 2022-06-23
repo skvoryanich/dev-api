@@ -1,4 +1,6 @@
-node_modules
-# Keep environment variables out of version control
-docker-compose.yml
-.idea
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
