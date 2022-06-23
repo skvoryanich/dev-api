@@ -1,12 +1,10 @@
 import * as express from "express";
-import bodyParser from 'body-parser';
 import { routesBots } from "./routes_bots";
 import { AppDataSource } from "./data-source"
 import { Bots } from "./entity/Bots"
 
 const app = express();
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 AppDataSource.initialize().then(async () => {
     console.log("Inserting a new user into the database...")
