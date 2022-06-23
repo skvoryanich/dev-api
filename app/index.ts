@@ -6,6 +6,7 @@ import { Bots } from "./entity/Bots"
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 AppDataSource.initialize().then(async () => {
     console.log("Inserting a new user into the database...")
@@ -14,9 +15,6 @@ AppDataSource.initialize().then(async () => {
     bots.idTg = 25124125
     await AppDataSource.manager.save(bots)
 }).catch(error => console.log(error))
-
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 routesBots(app);
 
