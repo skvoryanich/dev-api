@@ -1,3 +1,6 @@
+import {AppDataSource} from "./data-source";
+import {Bots} from "./entity/Bots";
+
 export function routesBots(app: any) {
     app.get('/', (req: any, res: any) => {
         res.json({
@@ -6,7 +9,8 @@ export function routesBots(app: any) {
         });
     })
 
-    app.get('/bots', (req: any, res: any) => {
-        res.send('lalala');
+    app.get('/bots', async (req: any, res: any) => {
+        const users = await AppDataSource.manager.find(Bots)
+        res.json(users);
     })
 }
