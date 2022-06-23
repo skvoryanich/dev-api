@@ -4,6 +4,8 @@ import {routesBots} from "./routes_bots";
 import { AppDataSource } from "./data-source"
 import { Bots } from "./entity/Bots"
 
+const app = express()
+
 AppDataSource.initialize().then(async () => {
     console.log("Inserting a new user into the database...")
     const bots = new Bots()
@@ -12,8 +14,6 @@ AppDataSource.initialize().then(async () => {
     await AppDataSource.manager.save(bots)
 }).catch(error => console.log(error))
 
-
-const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
