@@ -1,0 +1,30 @@
+{
+  "name": "dev-api",
+  "version": "1.0.0",
+  "description": "dev-api for telegram reminds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skvoryanich/dev-api.git"
+  },
+  "author": "skvoryanich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skvoryanich/dev-api/issues"
+  },
+  "homepage": "https://github.com/skvoryanich/dev-api#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.0",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.18",
+    "pg": "^8.7.3",
+    "ts-node": "^10.8.1",
+    "typeorm": "^0.3.6",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
