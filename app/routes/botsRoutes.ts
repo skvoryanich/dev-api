@@ -8,8 +8,13 @@ export class BotsRoutes{
         this.routes();
     }
 
-    public index(req: Request, res: Response){
+    public main(req: Request, res: Response){
         res.send('get req to bots');
+    }
+
+    public one(req: Request, res: Response){
+        const id = req['params']['id'];
+        res.send(`get req to bot with id: ${id}`);
     }
 
     public add(req: Request, res: Response){
@@ -27,7 +32,8 @@ export class BotsRoutes{
     }
 
     public routes(){
-        this.router.get('/', this.index);
+        this.router.get('/', this.main);
+        this.router.get('/:id', this.one);
         this.router.post('/', this.add);
         this.router.put('/:id', this.edit);
         this.router.delete('/:id', this.delete);
