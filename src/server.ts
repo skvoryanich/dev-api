@@ -1,9 +1,9 @@
-import express from "express";
+import express, {Application, Request, Response} from "express";
 import {BotsRoutes} from "./routes/botsRoutes";
 
 export class Server {
-    private app: express.Application;
     private botsRoutes: BotsRoutes;
+    private app: Application;
 
     constructor() {
         this.app = express();
@@ -18,8 +18,11 @@ export class Server {
 
     public routes(){
         this.app.use(`/bots/`, this.botsRoutes.router);
-        this.app.get("/", (req, res) => {
-            res.send('test');
+        this.app.get("/", (req: Request, res:Response) => {
+            res.json({
+                type: 'message',
+                message: 'restfull api for telegram reminds'
+            });
         });
     }
 

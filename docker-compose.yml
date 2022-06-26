@@ -1,11 +1,14 @@
-version: "3.8"
-
+version: '3.8'
 services:
-  postgres:
-    image: "postgres:10.3"
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
     environment:
-      POSTGRES_DB: devapi
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      - MYSQL_DATABASE=devapi
+      - MYSQL_USER=devapiuser
+      - MYSQL_PASSWORD=devapipassword
+      - MYSQL_ROOT_PASSWORD=ALKjal3kjylKJAylk3wjnylk
     ports:
-      - 5432:5432
+      - '3306:3306'
