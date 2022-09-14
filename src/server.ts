@@ -1,29 +1,29 @@
 import express, {Application, Request, Response} from "express";
-import {BotsRoutes} from "./routes/botsRoutes";
+import {AuthRoutes} from "./routes/authRoutes";
 
 export class Server {
-    private botsRoutes: BotsRoutes;
+    private authRoutes: AuthRoutes;
     private app: Application;
 
     constructor() {
         this.app = express();
         this.configuration();
-        this.botsRoutes = new BotsRoutes();
+        this.authRoutes = new AuthRoutes();
         this.routes();
     }
 
     public configuration(){
-        this.app.set('port', process.env.PORT || 3000);
+        this.app.set('port', 8080);
     }
 
     public routes(){
-        this.app.use(`/bots/`, this.botsRoutes.router);
         this.app.get("/", (req: Request, res:Response) => {
             res.json({
                 type: 'message',
-                message: 'restfull api for telegram reminds'
+                message: 'Главная страница. Тут должен быть редирект на авторизацию, как и на всех страницах - если нет куки с именем JTOKEN или он равняется empty'
             });
         });
+        this.app.use(`/auth/`, this.authRoutes.router);
     }
 
     public start(){
