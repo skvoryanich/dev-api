@@ -5,8 +5,7 @@
    "main": "index.js",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "start": "nodemon src/index.ts"
    },
    "repository": {
       "type": "git",
@@ -18,13 +17,14 @@
       "url": "https://github.com/skvoryanich/dev-api/issues"
    },
    "homepage": "https://github.com/skvoryanich/dev-api#readme",
-   "devDependencies": {
+   "devDependencies": {},
+   "dependencies": {
       "@types/express": "^4.17.13",
       "@types/node": "^16.11.10",
       "express": "^4.18.1",
-      "nodemon": "^2.0.18",
+      "express-handlebars": "^6.0.6",
+      "nodemon": "^2.0.19",
       "ts-node": "10.7.0",
       "typescript": "4.5.2"
-   },
-   "dependencies": {}
+   }
 }
