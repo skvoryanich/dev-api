@@ -1,23 +1,19 @@
-import {Router, Response, Request} from "express";
+import {Response, Request, Router} from "express";
 
-export class AuthRoutes {
-    public router: Router;
+/**
+ * Namespace /auth
+ */
 
-    constructor() {
-        this.router = Router();
-        this.routes();
-    }
+export function authRoutes(): Router {
+    const router = Router();
 
-    public main(req: Request, res: Response){
+    router.get('/', (req: Request, res: Response) => {
         res.send('Страница ввода логина и пароля');
-    }
+    });
 
-    public add(req: Request, res: Response){
+    router.post('/', (req: Request, res: Response) => {
         res.send('Обработчик пост данных авторизации по логину и паролю');
-    }
+    });
 
-    public routes(){
-        this.router.get('/', this.main);
-        this.router.post('/', this.add);
-    }
+    return router;
 }
