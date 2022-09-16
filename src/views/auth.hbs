@@ -41,6 +41,7 @@
                     } else{
                         console.log(result);
                         setCookie( "JTOKEN", result.message);
+                        location.href = '/';
                     }
                 })
                 .catch(function (error) {

@@ -1,4 +1,5 @@
 import {Response, Request, Router} from "express";
+import {JWT} from "../modules/JWTClass";
 
 /**
  * Namespace /auth
@@ -6,16 +7,17 @@ import {Response, Request, Router} from "express";
 
 export function authRoutes(): Router {
     const router = Router();
+    const jwt = new JWT;
 
     router.get('/', (req: Request, res: Response) => {
-        let cookie = req.cookies.JTOKEN;
-        if (cookie && cookie != 'empty'){
-            res.redirect("/");
-        } else {
+        let token = req.cookies.JTOKEN;
+        if (!jwt.checkToken(token)){
             res.render('auth', {
                 title: 'Авторизация - REPORTS',
                 text: 'Авторизация'
             });
+        } else {
+            res.redirect("/");
         }
     });
 
@@ -27,7 +29,7 @@ export function authRoutes(): Router {
         let state = checkAuth(req.body.login_name, req.body.login_password);
 
         if (state){
-            res.json({auth_state: 'ok', message: req.body.login_name+req.body.login_password});
+            res.json({auth_state: 'ok', message: jwt.generateToken({username: req.body.login_name})});
         } else {
             res.json({auth_state: 'fail', message: 'Не правильный логин или пароль'});
         }
