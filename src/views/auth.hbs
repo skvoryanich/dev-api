@@ -16,7 +16,7 @@
                             <input type="password" name="login_password" class="form-control" id="floatingPassword" placeholder="Пароль" required>
                             <label for="floatingPassword">Пароль</label>
                         </div>
-                        <input type="button" id="login_submit" value="Войти в систему" class="btn btn-dark btn-lg w-100">
+                        <input type="submit" value="Войти в систему" class="btn btn-dark btn-lg w-100">
                     </form>
                 </div>
             </div>
@@ -32,20 +32,22 @@
 
     const bs5Utils = new Bs5Utils();
 
-    login_submit.onclick = function() {
-        axios.post('/auth', $('#auth_form').serialize())
-                .then(function (response) {
-                    let result = response.data
-                    if (result.auth_state === 'fail'){
-                        bs5Utils.Snack.show('danger', result.message, 10000, true);
-                    } else{
-                        console.log(result);
-                        setCookie( "JTOKEN", result.message);
-                        location.href = '/';
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+    document.getElementById("auth_form").onsubmit=
+        function() {
+            axios.post('/auth', $('#auth_form').serialize())
+                    .then(function (response) {
+                        let result = response.data
+                        if (result.auth_state === 'fail'){
+                            bs5Utils.Snack.show('danger', result.message, 10000, true);
+                        } else{
+                            console.log(result);
+                            setCookie( "JTOKEN", result.message);
+                            location.href = '/';
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            return false;
     }
 </script>

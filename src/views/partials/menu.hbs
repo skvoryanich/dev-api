@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="/"><img src="./img/logo.png" style="padding-right: 20px;" height="30" alt="" loading="lazy"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ps-1 pt-1 text-center">
+                    <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                </li>
+                <li class="nav-item ps-1 pe-1 pt-1 text-center dropdown ">
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Отчёты
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/reports">Все отчёты</a></li>
+                        <li><a class="dropdown-item" href="/reports/search">Поиск по ключевому слову</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ps-1 pe-1 pt-1 text-center dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Календарь
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/calendar">Календарь ТП</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ps-1 pe-1 pt-1">
+                    <input type="button" class="btn btn-outline-dark" value="Добавить отчёт" data-bs-toggle="modal" data-bs-target="#addNewReport"/>
+                </li>
+                <li class="nav-item ps-2 pe-1 pt-1">
+                    <form action='/search' method='post'>
+                        <input type="text" name="ticket" placeholder="Поиск" по №ТТ class="form-control w-75" onkeyup="this.value = this.value.replace (/\D/, '')">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="d-flex flex-row-reverse bg-dark">
+    <div class="p-0 text-white" style="margin: 0 15px 0 auto;">Привет, ИмяПользователя <a style="color: white;" href="/auth/logout">[Выйти]</a></div>
+</div>
