@@ -1,6 +1,7 @@
 import {Response, Request, Router} from "express";
 import {JWT} from "../modules/JWTClass";
 import ldap from "ldapjs";
+import {PSSQL} from "../modules/PSSQLClass";
 
 /**
  * Namespace /auth
@@ -9,6 +10,7 @@ import ldap from "ldapjs";
 export function authRoutes(): Router {
     const router = Router();
     const jwt: JWT = new JWT;
+    const db = new PSSQL();
 
     router.get('/', (req: Request, res: Response) => {
         let token = req.cookies.JTOKEN;
@@ -29,13 +31,19 @@ export function authRoutes(): Router {
             res.json({auth_state: 'fail', message: 'Заполните все поля для ввода'});
             return;
         }
-        const result = await checkAuth(req.body.login_name, req.body.login_password);
+        const checkAccess = await db.checkExistAccess(req.body.login_name);
+        if (checkAccess == 1) {
+            const result = await checkAuth(req.body.login_name, req.body.login_password);
 
-        if (result) {
-            res.json({auth_state: 'ok', message: jwt.generateToken({username: req.body.login_name})});
+            if (result) {
+                res.json({auth_state: 'ok', message: jwt.generateToken({username: req.body.login_name})});
+            } else {
+                res.json({auth_state: 'fail', message: 'Не правильный логин или пароль'});
+            }
         } else {
-            res.json({auth_state: 'fail', message: 'Не правильный логин или пароль'});
+            res.json({auth_state: 'fail', message: 'У вас нет доступа к системе. Запросите доступ через администратора'});
         }
+
     });
 
     router.get('/logout', (req: Request, res: Response) => {
